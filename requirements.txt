@@ -1,21 +1,34 @@
-Flask>=2.2
-Flask-SQLAlchemy>=3.0
-Flask-Migrate>=4.0
-Flask-SocketIO>=5.3
-Flask-Cors>=3.1
-python-dotenv>=1.0
 
-SQLAlchemy>=2.0
-pymysql
-passlib[bcrypt]>=1.7
-PyJWT>=2.6
 
-eventlet>=0.33
-gunicorn>=20.1
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Flask-Cors==4.0.0
 
-alembic>=1.10
+# Auth
+PyJWT==2.8.0
+passlib[bcrypt]==1.7.4
 
-# Testing
-pytest>=7.0
-pytest-cov>=4.0
-pytest-flask>=1.2
+# Databases
+psycopg2-binary==2.9.9   # Postgres for Render
+pymysql==1.1.0           # MySQL fallback (only if needed)
+
+# SocketIO
+Flask-SocketIO==5.3.6
+python-engineio==4.9.0
+python-socketio==5.11.2
+
+# Deployment (Gunicorn)
+gunicorn==21.2.0
+eventlet==0.36.1     # Required for websocket support in production
+
+# Migrations
+alembic==1.13.2
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# Optional - Testing
+# pytest==8.2.0
+# pytest-cov==4.1.0
+# pytest-flask==1.3.0
