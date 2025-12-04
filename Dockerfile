@@ -1,34 +1,28 @@
-# Backend Dockerfile for Deeref (Flask + Flask-SocketIO)
-# Build context: backend/
-
+# Use Python base image
 FROM python:3.11-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies required for some Python packages (e.g. psycopg2)
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       build-essential \
-       libpq-dev \
-       gcc \
+# Install system dependencies (for pymysql, MySQL, socketio)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only requirements first for better caching
-COPY requirements.txt ./requirements.txt
+# Copy requirements
+COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application source
-COPY . /app
+# Copy everything
+COPY . .
 
-# Expose default Flask port
+# Expose the port that Render requires
 EXPOSE 5000
 
-# Recommended production command: use gunicorn with eventlet worker for Socket.IO support
-# Ensure run:app is valid (this file should create the Flask/SocketIO `app` object)
-CMD ["gunicorn", "-k", "eventlet", "-w", "1", "--bind", "0.0.0.0:5000", "run:app"]
+# Start Flask + SocketIO with Gunicorn
+CMD ["sh", "-c", "gunicorn -k eventlet -w 1 -b 0.0.0.0:$PORT 'app:create_app()'"]
+
+
