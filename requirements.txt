@@ -20,8 +20,8 @@ python-socketio==5.11.2
 
 # Deployment (Gunicorn)
 gunicorn==21.2.0
-gevent==21.12.0 
-gevent-websocket==0.10.1    # Required for websocket support in production
+gevent==23.7.0
+gevent-websocket==0.10.6    # Required for websocket support in production
 
 # Migrations
 alembic==1.13.2
