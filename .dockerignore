@@ -1,0 +1,30 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Local config & secrets
+.env
+*.db
+*.sqlite3
+instance/
+
+# Git
+.git
+.gitignore
+
+# Node / frontend
+node_modules/
+frontend/
+
+# Misc
+build/
+dist/
+*.egg-info/
