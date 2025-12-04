@@ -1,1 +1,1 @@
-web: gunicorn -k eventlet -w 1 --bind 0.0.0.0:$PORT run:app
+web: gunicorn --config gunicorn_config.py app.wsgi:app
