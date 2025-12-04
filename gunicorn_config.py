@@ -8,7 +8,7 @@ backlog = 2048
 
 # Worker processes (use 1 for WebSocket, or 2-4 with message queue)
 workers = int(os.getenv('GUNICORN_WORKERS', '1'))
-worker_class = 'eventlet'
+worker_class = 'gevent'
 worker_connections = 1000
 timeout = 120
 keepalive = 5
