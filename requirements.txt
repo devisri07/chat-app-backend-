@@ -1,29 +1,27 @@
- # Flask Core
+
+
 Flask==3.0.3
 Flask-SQLAlchemy==3.1.1
 Flask-Migrate==4.0.7
 Flask-Cors==4.0.0
 
-# Authentication
+# Auth
 PyJWT==2.8.0
 passlib[bcrypt]==1.7.4
 
-# Database (PostgreSQL for Render)
+# Database Drivers
 psycopg2-binary==2.9.9
 
-# SocketIO (no gevent-websocket conflict version)
+# SocketIO (threading mode, no gevent)
 Flask-SocketIO==5.3.6
-python-engineio==4.9.0
 python-socketio==5.11.2
+python-engineio==4.9.0
 
-# Production Server (Gunicorn + Gevent)
+# Deployment (NO gevent)
 gunicorn==21.2.0
-gevent==23.7.0
-gevent-websocket==0.10.1
 
 # Migrations
 alembic==1.13.2
 
 # Environment Variables
 python-dotenv==1.0.1
-
