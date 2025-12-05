@@ -12,7 +12,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 socketio = SocketIO(
-    async_mode="eventlet",  # eventlet mandatory for Gunicorn + SocketIO
+    async_mode="threading",  # eventlet mandatory for Gunicorn + SocketIO
     cors_allowed_origins="*",
     ping_timeout=60,
     ping_interval=25
