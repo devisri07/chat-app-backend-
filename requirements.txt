@@ -18,7 +18,7 @@ python-socketio==5.11.2
 
 # Production Server (Gunicorn + Gevent)
 gunicorn==21.2.0
-gevent==23.2.0
+gevent==23.7.0
 gevent-websocket==0.10.1
 
 # Migrations
