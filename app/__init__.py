@@ -25,7 +25,8 @@ def create_app():
     # --------------------------------------
     # Load Config.py ALWAYS (Render + Local)
     # --------------------------------------
-    from config import Config
+    from app.config import Config
+
     app.config.from_object(Config)
 
     db.init_app(app)
